@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://dys2j7qlujngf"]
+
+[ext_resource type="PackedScene" uid="uid://d24thwsd06bnj" path="res://bemo.glb" id="1_em08n"]
+
+[node name="Root Scene" instance=ExtResource("1_em08n")]

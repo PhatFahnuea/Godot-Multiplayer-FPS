@@ -1,0 +1,149 @@
+[gd_scene load_steps=12 format=3 uid="uid://dwhomj2p436sh"]
+
+[ext_resource type="Script" path="res://world.gd" id="1_82mcn"]
+[ext_resource type="PackedScene" uid="uid://cyva5bibpdbnh" path="res://environment.tscn" id="1_bekqv"]
+[ext_resource type="PackedScene" uid="uid://l5u1j1gs3qd0" path="res://models/base.tscn" id="2_lhwwg"]
+[ext_resource type="PackedScene" uid="uid://c1ecrftxk0ms5" path="res://models/apa.tscn" id="3_v5mu7"]
+[ext_resource type="PackedScene" uid="uid://db4hqp44gektb" path="res://models/apartment_building.tscn" id="4_dqqhm"]
+[ext_resource type="PackedScene" uid="uid://dys2j7qlujngf" path="res://models/root_scene.tscn" id="5_kwlai"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_xuedf"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_qr76k"]
+sky_material = SubResource("ProceduralSkyMaterial_xuedf")
+
+[sub_resource type="Environment" id="Environment_kd6xc"]
+background_mode = 2
+sky = SubResource("Sky_qr76k")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4uas0"]
+bg_color = Color(0.556583, 0.600844, 0.696922, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l854v"]
+bg_color = Color(0.587468, 0, 0.12623, 1)
+
+[node name="World" type="Node"]
+script = ExtResource("1_82mcn")
+
+[node name="Ev" type="Node" parent="."]
+
+[node name="Root Scene3" parent="Ev" instance=ExtResource("2_lhwwg")]
+transform = Transform3D(0.461636, 0, 0, 0, 0.461636, 0, 0, 0, 0.461636, -8.77146, 0.138001, -1.783)
+
+[node name="Root Scene" parent="Ev" instance=ExtResource("3_v5mu7")]
+transform = Transform3D(-0.638927, -0.0405611, 2.81975, -0.0638229, 7.91299, 0.0130225, -8.73228, -0.054867, -0.206412, -26.2632, 2.15626, 6.29886)
+
+[node name="Root Scene2" parent="Ev" instance=ExtResource("3_v5mu7")]
+transform = Transform3D(-4.87669, -0.0348077, 0.725534, -0.111395, 5.39232, -0.0103129, -0.143381, -0.0179849, -3.11605, 4.67415, 1.80562, 23.98)
+
+[node name="Apartment building" parent="Ev" instance=ExtResource("4_dqqhm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.9872, 2.12476, -22.6238)
+
+[node name="Apartment building2" parent="Ev" instance=ExtResource("4_dqqhm")]
+transform = Transform3D(0.540931, 0, 0, 0, 0.540931, 0, 0, 0, 0.540931, 13.1686, 2.12572, -27.7826)
+
+[node name="Root Scene4" parent="Ev" instance=ExtResource("5_kwlai")]
+transform = Transform3D(-0.99956, 0, -0.0410351, 0, 1.82651, 0, 0.0296488, 0, -1.38343, 24.0369, 5.84752, -15.2531)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_kd6xc")
+
+[node name="Environment" parent="." instance=ExtResource("1_bekqv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.193843, -1.19209e-07, -1.52152)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="MainMenu" type="PanelContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 444.0
+offset_top = 223.0
+offset_right = -292.0
+offset_bottom = -186.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.670725, 0.820451)
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/MainMenu"]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MainMenu/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 15
+alignment = 1
+
+[node name="Label" type="Label" parent="CanvasLayer/MainMenu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Main Menu"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HostButton" type="Button" parent="CanvasLayer/MainMenu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Host"
+
+[node name="NameEnter" type="LineEdit" parent="CanvasLayer/MainMenu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+placeholder_text = "Your Name"
+alignment = 1
+
+[node name="JoinButton" type="Button" parent="CanvasLayer/MainMenu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Join"
+
+[node name="AddressEntry" type="LineEdit" parent="CanvasLayer/MainMenu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+placeholder_text = "Enter Address to Join Here"
+alignment = 1
+
+[node name="HUD" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="HealthBar" type="ProgressBar" parent="CanvasLayer/HUD"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 357.0
+offset_top = 64.0
+offset_right = -334.0
+offset_bottom = -538.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_4uas0")
+theme_override_styles/fill = SubResource("StyleBoxFlat_l854v")
+max_value = 3.0
+value = 3.0
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("res://player.tscn")
+spawn_path = NodePath("..")
+
+[node name="Root Scene5" parent="." instance=ExtResource("5_kwlai")]
+transform = Transform3D(-2.34471, 0, 0.465753, 0, 2.39052, 0, -0.465753, 0, -2.34471, 23.7328, 6.82102, -7.94573)
+
+[node name="Root Scene" parent="." instance=ExtResource("2_lhwwg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.7702, 1.7662, 10.9122)
+
+[connection signal="pressed" from="CanvasLayer/MainMenu/MarginContainer/VBoxContainer/HostButton" to="." method="_on_host_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/MainMenu/MarginContainer/VBoxContainer/JoinButton" to="." method="_on_join_button_pressed"]
+[connection signal="spawned" from="MultiplayerSpawner" to="." method="_on_multiplayer_spawner_spawned"]

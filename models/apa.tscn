@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://c1ecrftxk0ms5"]
+
+[ext_resource type="PackedScene" uid="uid://ycm16ncikrnh" path="res://Building.glb" id="1_bck4a"]
+
+[node name="Root Scene" instance=ExtResource("1_bck4a")]
